@@ -2,7 +2,7 @@ import websockets
 import asyncio
 import pytest
 import json
-from tests.constants import URI
+from utils.constants import URI
 
 
 @pytest.fixture(scope="session")
