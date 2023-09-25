@@ -1,8 +1,10 @@
 from uuid import uuid4
 from .enums import Method
+from random import randint
 
 URI = "ws://0.0.0.0:8080"
-ID = uuid4()
+ID = str(uuid4())
+PHONE = str(randint(1000000, 9999999))
 
 
 add_body = {
@@ -14,7 +16,7 @@ add_body = {
     "age": 100500
 }
 
-delete_doby = {
+delete_body = {
     "id": "sfda-11231-123-adfb",
     "method": Method.DELETE,
     "phone": "1234567",

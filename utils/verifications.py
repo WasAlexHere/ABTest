@@ -1,13 +1,14 @@
-import json
 from pytest import fail
 
 
 def check_successful_response(response, **expected):
-    resp = json.loads(response)
 
-    if len(resp.keys()) == len(expected.keys()):
+    if len(response.keys()) == len(expected.keys()):
         for key, value in expected.items():
-            assert resp[key] == expected[key], resp[key]
+            assert response[key] == expected[key], response[key]
     else:
         fail("Incorrect number of keys in response")
 
+
+def check_only_status(response, expected_status):
+    assert response["status"] == expected_status, response["status"]

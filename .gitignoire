@@ -2,4 +2,4 @@ venv/
 .venv
 .idea
 .pytest_cache/
-Task.pdf
+*.pdf
