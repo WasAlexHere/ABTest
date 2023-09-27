@@ -7,7 +7,7 @@ add_body = {
     "name": "Chuck",
     "surname": "Dorris",
     "phone": "2128509",
-    "age": 100500
+    "age": 100500,
 }
 
 without_id = without(add_body, "id")
@@ -30,4 +30,3 @@ none_name = none_parameter(add_body, "name")
 none_surname = none_parameter(add_body, "surname")
 none_phone = none_parameter(add_body, "phone")
 none_age = none_parameter(add_body, "age")
-

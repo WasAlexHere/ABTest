@@ -2,7 +2,6 @@ from pytest import fail
 
 
 def check_successful_response(response, **expected):
-
     if len(response.keys()) == len(expected.keys()):
         for key, value in expected.items():
             assert response[key] == expected[key], response[key]

@@ -29,7 +29,9 @@ from .add_data import (
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize("body", [without_id, without_name, without_surname, without_age, without_method])
+@pytest.mark.parametrize(
+    "body", [without_id, without_name, without_surname, without_age, without_method]
+)
 async def test_add_a_new_user_without_parameter(event_loop, body):
     request_body = json.dumps(get_modified_body(body, phone=PHONE))
 
@@ -43,7 +45,9 @@ async def test_add_a_new_user_without_parameter(event_loop, body):
 
 @pytest.mark.asyncio
 @pytest.mark.xfail(reason="Поле id не может быть пустым!")
-@pytest.mark.parametrize("body", [empty_id, empty_name, empty_surname, empty_age, empty_method])
+@pytest.mark.parametrize(
+    "body", [empty_id, empty_name, empty_surname, empty_age, empty_method]
+)
 async def test_add_a_new_user_with_empty_parameter(event_loop, body):
     request_body = json.dumps(get_modified_body(body, phone=PHONE))
 
@@ -56,7 +60,9 @@ async def test_add_a_new_user_with_empty_parameter(event_loop, body):
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize("body", [none_id, none_name, none_method, none_age, none_surname])
+@pytest.mark.parametrize(
+    "body", [none_id, none_name, none_method, none_age, none_surname]
+)
 async def test_add_a_new_user_with_none_parameter(event_loop, body):
     request_body = json.dumps(get_modified_body(body, phone=PHONE))
 
@@ -84,14 +90,17 @@ async def test_add_a_new_user_with_phone_manipulations(event_loop, body):
 
 @pytest.mark.asyncio
 @pytest.mark.xfail(reason="Id и phone могут содержать специальные символы!")
-@pytest.mark.parametrize("body", [
-    get_modified_body(add_body, id="@!#$().[]", phone=PHONE),
-    get_modified_body(add_body, method="@!#$().[]", phone=PHONE),
-    get_modified_body(add_body, name="@!#$().[]", phone=PHONE),
-    get_modified_body(add_body, surname="@!#$().[]", phone=PHONE),
-    get_modified_body(add_body, age="@!#$().[]", phone=PHONE),
-    get_modified_body(add_body, phone="@!#$().[]"),
-])
+@pytest.mark.parametrize(
+    "body",
+    [
+        get_modified_body(add_body, id="@!#$().[]", phone=PHONE),
+        get_modified_body(add_body, method="@!#$().[]", phone=PHONE),
+        get_modified_body(add_body, name="@!#$().[]", phone=PHONE),
+        get_modified_body(add_body, surname="@!#$().[]", phone=PHONE),
+        get_modified_body(add_body, age="@!#$().[]", phone=PHONE),
+        get_modified_body(add_body, phone="@!#$().[]"),
+    ],
+)
 async def test_add_a_new_user_without_invalid_value(event_loop, body):
     request_body = json.dumps(body)
 
@@ -104,13 +113,16 @@ async def test_add_a_new_user_without_invalid_value(event_loop, body):
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize("body", [
-    get_modified_body(add_body, id="a"*100, phone=PHONE),
-    get_modified_body(add_body, name="a"*100, phone=PHONE),
-    get_modified_body(add_body, surname="a"*100, phone=PHONE),
-    get_modified_body(add_body, age="1"*100, phone=PHONE),
-    get_modified_body(add_body, phone="1"*100),
-])
+@pytest.mark.parametrize(
+    "body",
+    [
+        get_modified_body(add_body, id="a" * 100, phone=PHONE),
+        get_modified_body(add_body, name="a" * 100, phone=PHONE),
+        get_modified_body(add_body, surname="a" * 100, phone=PHONE),
+        get_modified_body(add_body, age="1" * 100, phone=PHONE),
+        get_modified_body(add_body, phone="1" * 100),
+    ],
+)
 async def test_add_a_new_user_without_invalid_length_value(event_loop, body):
     request_body = json.dumps(body)
 
@@ -124,7 +136,6 @@ async def test_add_a_new_user_without_invalid_length_value(event_loop, body):
 
 @pytest.mark.asyncio
 async def test_add_user_with_same_id(event_loop):
-
     new_id = ID
     request_body = json.dumps(get_modified_body(add_body, id=new_id, phone=PHONE))
 
@@ -147,7 +158,6 @@ async def test_add_user_with_same_id(event_loop):
 
 @pytest.mark.asyncio
 async def test_add_user_with_same_phone(event_loop):
-
     new_phone = PHONE
     request_body = json.dumps(get_modified_body(add_body, id=ID, phone=new_phone))
 

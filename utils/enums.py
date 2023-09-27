@@ -11,4 +11,3 @@ class Method(str, Enum):
 class Status(str, Enum):
     SUCCESS = "success"
     FAILURE = "failure"
-
