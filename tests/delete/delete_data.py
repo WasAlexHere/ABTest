@@ -1,5 +1,5 @@
-from utils.helpers import without, empty_parameter, none_parameter
 from utils.enums import Method
+from utils.helpers import empty_parameter, none_parameter, without
 
 delete_body = {
     "id": "sfda-11231-123-adfb",

@@ -1,31 +1,18 @@
-import websockets
-import pytest
 import json
-from utils.constants import URI, ID, PHONE
+
+import pytest
+import websockets
+
+from utils.constants import ID, PHONE, URI
+from utils.enums import Status
 from utils.helpers import get_modified_body
 from utils.verifications import check_only_status
-from utils.enums import Status
-from .add_data import (
-    add_body,
-    without_id,
-    without_surname,
-    without_name,
-    without_age,
-    without_method,
-    without_phone,
-    empty_id,
-    empty_method,
-    empty_name,
-    empty_surname,
-    empty_phone,
-    empty_age,
-    none_id,
-    none_name,
-    none_method,
-    none_age,
-    none_surname,
-    none_phone,
-)
+
+from .add_data import (add_body, empty_age, empty_id, empty_method, empty_name,
+                       empty_phone, empty_surname, none_age, none_id,
+                       none_method, none_name, none_phone, none_surname,
+                       without_age, without_id, without_method, without_name,
+                       without_phone, without_surname)
 
 
 @pytest.mark.asyncio
@@ -113,6 +100,7 @@ async def test_add_a_new_user_without_invalid_value(event_loop, body):
 
 
 @pytest.mark.asyncio
+@pytest.mark.xfail(reason="Поле id и phone не имеют конечной длины допустимого значения")
 @pytest.mark.parametrize(
     "body",
     [

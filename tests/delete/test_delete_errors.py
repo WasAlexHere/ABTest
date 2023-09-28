@@ -1,19 +1,15 @@
-import websockets
-import pytest
 import json
-from utils.constants import URI, ID, PHONE
-from .delete_data import (
-    delete_body,
-    without_phone,
-    without_id,
-    empty_id,
-    empty_phone,
-    none_id,
-    none_phone,
-)
-from utils.helpers import get_modified_body
-from utils.verifications import check_successful_response, check_only_status
+
+import pytest
+import websockets
+
+from utils.constants import ID, PHONE, URI
 from utils.enums import Method, Status
+from utils.helpers import get_modified_body
+from utils.verifications import check_only_status, check_successful_response
+
+from .delete_data import (delete_body, empty_id, empty_phone, none_id,
+                          none_phone, without_id, without_phone)
 
 
 @pytest.mark.asyncio

@@ -1,11 +1,22 @@
-import websockets
-import pytest
+import asyncio
 import json
-from utils.constants import URI, ID, PHONE
-from utils.helpers import get_modified_body
-from utils.verifications import check_successful_response, check_only_status
+
+import pytest
+import websockets
+
+from utils.constants import ID, PHONE, URI
 from utils.enums import Method, Status
+from utils.helpers import get_modified_body
+from utils.verifications import check_only_status, check_successful_response
+
 from .add_data import add_body
+
+
+async def client(request):
+    async with websockets.connect(URI) as ws:
+        await ws.send(request)
+        repl = await ws.recv()
+        return json.loads(repl)
 
 
 @pytest.mark.asyncio
