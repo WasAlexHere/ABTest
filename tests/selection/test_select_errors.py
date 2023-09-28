@@ -3,13 +3,18 @@ import json
 import pytest
 import websockets
 
-from tests.add.add_data import add_body
-from utils.constants import ID, PHONE, URI
-from utils.enums import Method, Status
-from utils.helpers import get_modified_body
-from utils.verifications import check_only_status, check_successful_response
+from utils.constants import URI
+from utils.enums import Status
+from utils.verifications import check_only_status
 
-from .select_data import (select_body, without_id, without_name, without_surname, empty_id, empty_name, empty_surname)
+from .select_data import (
+    without_id,
+    without_name,
+    without_surname,
+    empty_id,
+    empty_name,
+    empty_surname,
+)
 
 
 @pytest.mark.asyncio

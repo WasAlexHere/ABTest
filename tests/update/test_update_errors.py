@@ -3,7 +3,6 @@ import json
 import pytest
 import websockets
 
-from tests.add.add_data import add_body
 from utils.constants import ID, PHONE, URI
 from utils.enums import Method, Status
 from utils.helpers import get_modified_body
